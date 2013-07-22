@@ -13,7 +13,7 @@ defmodule Currently.CLI do
   @doc """
   `argv` can be -h or --help, which returns :help.
 
-  Otherwise it is a token provides by trello.
+  Otherwise it is a token provided by trello.
 
   Return a tuple of `{token}`, or `:help` if help was given.
 
