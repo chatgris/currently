@@ -10,7 +10,7 @@ defmodule Currently.Mixfile do
 
   # Configuration for the OTP application
   def application do
-    []
+    [applications: [:httpotion]]
   end
 
   # Returns the list of dependencies in the format:
