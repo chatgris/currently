@@ -5,7 +5,6 @@ defmodule Currently.CLI do
   """
 
   def run(argv) do
-    IO.puts "start"
     argv
       |> parse_args
       |> process
@@ -31,7 +30,6 @@ defmodule Currently.CLI do
 
   """
   def parse_args(argv) do
-    IO.inspect argv
     parse = OptionParser.parse(argv, switches: [help: :boolean],
                                      aliases: [h: :help]
     )
@@ -49,7 +47,7 @@ defmodule Currently.CLI do
     System.halt(0)
   end
 
-  def process(key, token) do
+  def process({key, token}) do
     Currently.TrelloCards.fetch(key, token)
       |> decode_response
       |> display_cards(["name", "due", "shortUrl"])
