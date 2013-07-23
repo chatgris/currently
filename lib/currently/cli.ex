@@ -5,6 +5,7 @@ defmodule Currently.CLI do
   """
 
   def run(argv) do
+    IO.puts "start"
     argv
       |> parse_args
       |> process
@@ -30,6 +31,7 @@ defmodule Currently.CLI do
 
   """
   def parse_args(argv) do
+    IO.inspect argv
     parse = OptionParser.parse(argv, switches: [help: :boolean],
                                      aliases: [h: :help]
     )
