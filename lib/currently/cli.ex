@@ -25,18 +25,21 @@ defmodule Currently.CLI do
       iex> Currently.CLI.parse_args(["-help", "token"])
       :help
 
-      iex> Currently.CLI.parse_args(["key", "token"])
+      iex> Currently.CLI.parse_args(["-k", "key", "-t", "token"])
+      {"key", "token"}
+
+      iex> Currently.CLI.parse_args(["-key", "key", "-token", "token"])
       {"key", "token"}
 
   """
   def parse_args(argv) do
     parse = OptionParser.parse(argv, switches: [help: :boolean],
-                                     aliases: [h: :help]
+                                     aliases: [h: :help, k: :key, t: :token]
     )
     case parse do
-      {[help: true], _}   -> :help
-      {_, [key, token]}   -> {key, token}
-      _                   -> :help
+      {[help: true], _}                        -> :help
+      {[key: key, token: token, help: _], _}   -> {key, token}
+      _                                        -> :help
     end
   end
 
