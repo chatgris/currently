@@ -31,6 +31,12 @@ defmodule Currently.CLI do
       iex> Currently.CLI.parse_args(["cards", "-k", "key", "-t", "token"])
       {:cards, "key", "token"}
 
+      iex> Currently.CLI.parse_args(["configure", "-key", "key", "-token", "token"])
+      {:configure, "key", "token"}
+
+      iex> Currently.CLI.parse_args(["configure", "-k", "key", "-t", "token"])
+      {:configure, "key", "token"}
+
   """
   def parse_args(argv) do
     parse = OptionParser.parse(argv, switches: [help: :boolean],
@@ -39,6 +45,7 @@ defmodule Currently.CLI do
     case parse do
       {[help: true], _}                                    -> :help
       {[key: key, token: token, help: _], ["cards"]}       -> {:cards, key, token}
+      {[key: key, token: token, help: _], ["configure"]}   -> {:configure, key, token}
       _                                                    -> :help
     end
   end
@@ -54,6 +61,12 @@ defmodule Currently.CLI do
     Currently.TrelloCards.fetch(key, token)
       |> decode_response
       |> display_cards(["name", "due", "shortUrl"])
+  end
+
+  def process({:configure, key, token}) do
+    configuration = Jsonex.encode([key: key, token: token])
+    path = Path.expand("~")
+    File.write!("#{path}/.currently.json", configuration)
   end
 
   def decode_response({:ok, body}) do
