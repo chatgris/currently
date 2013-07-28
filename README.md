@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/chatgris/currently.png?branch=master)](https://travis-ci.org/chatgris/currently)
+
 # Currently
 
 `currently` is a tool to display cards currently assigns on Trello.
