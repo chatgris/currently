@@ -25,11 +25,11 @@ defmodule Currently.CLI do
       iex> Currently.CLI.parse_args(["-help", "token"])
       :help
 
-      iex> Currently.CLI.parse_args(["-k", "key", "-t", "token"])
-      {"key", "token"}
+      iex> Currently.CLI.parse_args(["cards", "-key", "key", "-token", "token"])
+      {:cards, "key", "token"}
 
-      iex> Currently.CLI.parse_args(["-key", "key", "-token", "token"])
-      {"key", "token"}
+      iex> Currently.CLI.parse_args(["cards", "-k", "key", "-t", "token"])
+      {:cards, "key", "token"}
 
   """
   def parse_args(argv) do
@@ -37,20 +37,20 @@ defmodule Currently.CLI do
                                      aliases: [h: :help, k: :key, t: :token]
     )
     case parse do
-      {[help: true], _}                        -> :help
-      {[key: key, token: token, help: _], _}   -> {key, token}
-      _                                        -> :help
+      {[help: true], _}                                    -> :help
+      {[key: key, token: token, help: _], ["cards"]}       -> {:cards, key, token}
+      _                                                    -> :help
     end
   end
 
   def process(:help) do
     IO.puts """
-    usage: currently <key> <token>
+    usage: currently cards -k <key> -t <token>
     """
     System.halt(0)
   end
 
-  def process({key, token}) do
+  def process({:cards, key, token}) do
     Currently.TrelloCards.fetch(key, token)
       |> decode_response
       |> display_cards(["name", "due", "shortUrl"])
