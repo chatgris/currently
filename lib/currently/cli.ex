@@ -31,11 +31,14 @@ defmodule Currently.CLI do
       iex> Currently.CLI.parse_args(["cards", "-k", "key", "-t", "token"])
       {:cards, "key", "token"}
 
-      iex> Currently.CLI.parse_args(["configure", "-key", "key", "-token", "token"])
-      {:configure, "key", "token"}
+      iex> Currently.CLI.parse_args(["configure", "-key", "trello_key", "-token", "trello_token"])
+      {:configure, "trello_key", "trello_token"}
 
-      iex> Currently.CLI.parse_args(["configure", "-k", "key", "-t", "token"])
-      {:configure, "key", "token"}
+      iex> Currently.CLI.parse_args(["configure", "-k", "trello_key", "-t", "trello_token"])
+      {:configure, "trello_key", "trello_token"}
+
+      iex> Currently.CLI.parse_args(["cards"])
+      :cards
 
   """
   def parse_args(argv) do
@@ -44,6 +47,7 @@ defmodule Currently.CLI do
     )
     case parse do
       {[help: true], _}                                    -> :help
+      {[help: _], ["cards"]}                               -> :cards
       {[key: key, token: token, help: _], ["cards"]}       -> {:cards, key, token}
       {[key: key, token: token, help: _], ["configure"]}   -> {:configure, key, token}
       _                                                    -> :help
@@ -52,9 +56,17 @@ defmodule Currently.CLI do
 
   def process(:help) do
     IO.puts """
+    usage: currently cards
+    usage: currently configure -k <key> -t <token>
     usage: currently cards -k <key> -t <token>
     """
     System.halt(0)
+  end
+
+  def process(:cards) do
+    configuration_file = File.read!(configuration_path)
+    [{_, key}, {_, token}] = Jsonex.decode(configuration_file)
+    process({:cards, key, token})
   end
 
   def process({:cards, key, token}) do
@@ -65,8 +77,7 @@ defmodule Currently.CLI do
 
   def process({:configure, key, token}) do
     configuration = Jsonex.encode([key: key, token: token])
-    path = Path.expand("~")
-    File.write!("#{path}/.currently.json", configuration)
+    File.write!(configuration_path, configuration)
   end
 
   def decode_response({:ok, body}) do
@@ -85,5 +96,9 @@ defmodule Currently.CLI do
   def display_card(card, fields) do
     IO.puts Enum.map(fields, fn field -> card[field] end)
       |> Enum.join " ,"
+  end
+
+  defp configuration_path do
+    "#{Path.expand("~")}/.currently.json"
   end
 end
