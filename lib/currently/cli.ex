@@ -47,8 +47,7 @@ defmodule Currently.CLI do
     )
     case parse do
       {[], ["cards"]}                                      -> :cards
-      {[key: key, token: token], ["cards"]}                -> {:cards, key, token}
-      {[key: key, token: token], ["configure"]}            -> {:configure, key, token}
+      {[key: key, token: token], [command]}                -> {binary_to_atom(command), key, token}
       _                                                    -> :help
     end
   end
