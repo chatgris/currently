@@ -46,10 +46,9 @@ defmodule Currently.CLI do
                                      aliases: [h: :help, k: :key, t: :token]
     )
     case parse do
-      {[help: true], _}                                    -> :help
-      {[help: _], ["cards"]}                               -> :cards
-      {[key: key, token: token, help: _], ["cards"]}       -> {:cards, key, token}
-      {[key: key, token: token, help: _], ["configure"]}   -> {:configure, key, token}
+      {[], ["cards"]}                                      -> :cards
+      {[key: key, token: token], ["cards"]}                -> {:cards, key, token}
+      {[key: key, token: token], ["configure"]}            -> {:configure, key, token}
       _                                                    -> :help
     end
   end
