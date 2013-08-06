@@ -2,7 +2,21 @@
 
 # Currently
 
-`currently` is a tool to display cards currently assigns on Trello.
+`currently` is a tool to display cards currently assigned to you on Trello.
+
+## How to use it?
+
+``` sh
+mix deps.get
+mix escriptize
+./currently configure -k <key> -t <token>
+./currently cards
+```
+
+You can create a Developer API key on https://trello.com/1/appKey/generate.
+For the token, see
+https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user.
+
 
 ## Notice
 
