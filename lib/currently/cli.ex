@@ -92,8 +92,8 @@ defmodule Currently.CLI do
   end
 
   def display_card(card, fields) do
-    IO.puts Enum.map(fields, fn field -> card[field] end)
-      |> Enum.join " ,"
+    IO.puts Enum.map(fields, card[&1])
+      |> Enum.join ", "
   end
 
   defp configuration_path do
