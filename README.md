@@ -4,6 +4,10 @@
 
 `currently` is a tool to display cards currently assigned to you on Trello.
 
+## Dependencies
+
+  * Elixir >= 0.10.1
+
 ## How to use it?
 
 ``` sh
