@@ -78,20 +78,20 @@ defmodule Currently.CLI do
     File.write!(configuration_path, configuration)
   end
 
-  def decode_response({:ok, body}) do
+  defp decode_response({:ok, body}) do
     Jsonex.decode(body)
   end
 
-  def decode_response({:error, msg}) do
+  defp decode_response({:error, msg}) do
     IO.puts "Error fetching from trello: #{msg}"
     System.halt(2)
   end
 
-  def display_cards(cards, fields) do
+  defp display_cards(cards, fields) do
     Enum.each cards, display_card(&1, fields)
   end
 
-  def display_card(card, fields) do
+  defp display_card(card, fields) do
     IO.puts Enum.map(fields, card[&1])
       |> Enum.join ", "
   end
