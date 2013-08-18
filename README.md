@@ -11,6 +11,8 @@
 ## How to use it?
 
 ``` sh
+git clone https://github.com/chatgris/currently.git
+cd currently
 mix deps.get
 mix escriptize
 ./currently configure -k <key> -t <token>
