@@ -88,11 +88,11 @@ defmodule Currently.CLI do
   end
 
   defp display_cards(cards, fields) do
-    Enum.each cards, display_card(&1, fields)
+    Enum.each cards, &display_card(&1, fields)
   end
 
   defp display_card(card, fields) do
-    IO.puts Enum.map(fields, card[&1])
+    IO.puts Enum.map(fields, &card[&1])
       |> Enum.join ", "
   end
 
