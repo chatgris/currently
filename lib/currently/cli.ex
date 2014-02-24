@@ -70,7 +70,7 @@ defmodule Currently.CLI do
   def process({:cards, key, token}) do
     Currently.TrelloCards.fetch(key, token)
       |> decode_response
-      |> display_cards(["name", "due", "shortUrl"])
+      |> display_cards([{:cyan, "name"}, {:magenta, "due"}, {:white, "shortUrl"}])
   end
 
   def process({:configure, key, token}) do
@@ -92,8 +92,18 @@ defmodule Currently.CLI do
   end
 
   defp display_card(card, fields) do
-    IO.puts Enum.map(fields, &card[&1])
-      |> Enum.join ", "
+    Enum.map(fields, &colorize(&1, card))
+      |> compact
+      |> IO.ANSI.escape(true)
+      |> IO.puts
+  end
+
+  defp colorize({color, field}, card) do
+    "%{#{color}}#{card[field]}"
+  end
+
+  defp compact(fields) do
+    Enum.join(fields, ", ")
   end
 
   defp configuration_path do
