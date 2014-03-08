@@ -24,12 +24,9 @@ For the token, see
 https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user.
 
 
-## Notice
+## TODO
 
-This build is builded while I'm reading [Programming Elixir: Functional |>
-Concurrent |> Pragmatic |>
-Fun](http://pragprog.com/book/elixir/programming-elixir), so this project is a
-WIP.
+  * Filter cards by boards
 
 ## Copyright
 
