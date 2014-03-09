@@ -70,7 +70,7 @@ defmodule Currently.CLI do
   def process({:cards, key, token}) do
     Currently.TrelloCards.fetch(key, token)
       |> decode_response
-      |> display_cards([{:cyan, "name"}, {:magenta, "due"}, {:white, "shortUrl"}])
+      |> Currently.Renderer.render(key, token)
   end
 
   def process({:configure, key, token}) do
@@ -85,25 +85,6 @@ defmodule Currently.CLI do
   defp decode_response({:error, msg}) do
     IO.puts "Error fetching from trello: #{msg}"
     System.halt(2)
-  end
-
-  defp display_cards(cards, fields) do
-    Enum.each cards, &display_card(&1, fields)
-  end
-
-  defp display_card(card, fields) do
-    Enum.map(fields, &colorize(&1, card))
-      |> compact
-      |> IO.ANSI.escape(true)
-      |> IO.puts
-  end
-
-  defp colorize({color, field}, card) do
-    "%{#{color}}#{card[field]}"
-  end
-
-  defp compact(fields) do
-    Enum.join(fields, ", ")
   end
 
   defp configuration_path do
