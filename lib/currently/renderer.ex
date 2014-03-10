@@ -47,15 +47,27 @@ defmodule Currently.Renderer do
     "    " <> Enum.join(fields, ", ")
   end
 
+  defp remove_empty(fields) do
+    Enum.reject fields, fn(field) -> field == nil end
+  end
+
   defp display_card(card, fields) do
     Enum.map(fields, &colorize(&1, card))
+      |> remove_empty
       |> compact
       |> IO.ANSI.escape(true)
       |> IO.puts
   end
 
   defp colorize({color, field}, card) do
-    "%{#{color}}#{card[field]}"
+    colorize(color, card[field])
+  end
+
+  defp colorize(_color, :null) do
+  end
+
+  defp colorize(color, content) do
+    "%{#{color}}#{content}"
   end
 
   defp colorize_board({board_name, cards}) do
