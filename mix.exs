@@ -19,7 +19,7 @@ defmodule Currently.Mixfile do
   # { :foobar, "0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
     [
-      {:httpotion, github: "chatgris/httpotion"},
+      {:httpotion, github: "myfreeweb/httpotion"},
       {:jsonex,    github: "marcelog/jsonex"}
     ]
   end

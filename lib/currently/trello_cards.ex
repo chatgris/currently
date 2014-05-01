@@ -5,20 +5,20 @@ defmodule Currently.TrelloCards do
 
   def fetch(key, token) do
     case HTTPotion.get(issues_url(key, token), @user_agent) do
-      Response[body: body, status_code: status, headers: _headers]
+      %Response{body: body, status_code: status, headers: _headers}
       when status in 200..299 ->
         {:ok, body}
-      Response[body: body, status_code: _status, headers: _headers] ->
+      %Response{body: body, status_code: _status, headers: _headers} ->
         {:error, body}
     end
   end
 
   def board(id, key, token) do
     case HTTPotion.get(board_url(id, key, token), @user_agent) do
-      Response[body: body, status_code: status, headers: _headers]
+      %Response{body: body, status_code: status, headers: _headers}
       when status in 200..299 ->
         {:ok, body}
-      Response[body: body, status_code: _status, headers: _headers] ->
+      %Response{body: body, status_code: _status, headers: _headers} ->
         {:error, body}
     end
   end
