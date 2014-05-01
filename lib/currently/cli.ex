@@ -64,8 +64,8 @@ defmodule Currently.CLI do
 
   def process(:cards) do
     configuration_file = File.read!(configuration_path)
-    [{_, key}, {_, token}] = Jsonex.decode(configuration_file)
-    process({:cards, key, token})
+    {:ok, configuration} = JSEX.decode(configuration_file)
+    process({:cards, configuration["key"], configuration["token"]})
   end
 
   def process({:cards, key, token}) do
@@ -80,7 +80,8 @@ defmodule Currently.CLI do
   end
 
   defp decode_response({:ok, body}) do
-    Jsonex.decode(body)
+    {:ok, response} = JSEX.decode(body)
+    response
   end
 
   defp decode_response({:error, msg}) do

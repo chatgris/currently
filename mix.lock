@@ -1,4 +1,5 @@
 %{"httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "3346c05b5ba31f8d8b60090341e155f06c7dbc33", []},
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "7871e2ebe8811efb64e1917e2de455fa87e8dfe3", [tag: "v4.1.0"]},
+  "jsex": {:git, "git://github.com/talentdeficit/jsex.git", "01073fd976397d4140032b62ae64f15d1442ea18", [branch: "develop"]},
   "jsonex": {:git, "git://github.com/marcelog/jsonex.git", "82e6c416eed5e791073427bf3079d7ab7b85a1e1", []},
-  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "9cb8703beecaf4c39e3dbfa293c747a0e7aa6450", []}}
+  "jsx": {:git, "git://github.com/talentdeficit/jsx.git", "507fa4c41db33c81e925ab53f4d789d234aaff2f", [tag: "v2.0.1"]}}

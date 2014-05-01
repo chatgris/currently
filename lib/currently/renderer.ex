@@ -25,8 +25,8 @@ defmodule Currently.Renderer do
   defp rename_board(board, key, token) do
     {id, cards} = board
     {:ok, board} = Currently.TrelloCards.board(id, key, token)
-    board_name = Jsonex.decode(board)["name"]
-    {board_name, cards}
+    {:ok, response} = JSEX.decode(board)
+    {response["name"], cards}
   end
 
   defp display_boards(boards) do
