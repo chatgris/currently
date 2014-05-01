@@ -6,7 +6,7 @@
 
 ## Dependencies
 
-  * Elixir >= 0.10.3
+  * Elixir >= 0.13
 
 ## How to use it?
 
@@ -22,11 +22,6 @@ mix escriptize
 You can create a Developer API key on https://trello.com/1/appKey/generate.
 For the token, see
 https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user.
-
-
-## TODO
-
-  * Filter cards by boards
 
 ## Copyright
 
