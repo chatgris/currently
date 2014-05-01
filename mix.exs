@@ -1,3 +1,5 @@
+Code.ensure_loaded?(Hex) and Hex.start
+
 defmodule Currently.Mixfile do
   use Mix.Project
 
@@ -7,6 +9,8 @@ defmodule Currently.Mixfile do
       elixir: "~> 0.13",
       escript_main_module: Currently,
       escript_embed_elixir: true,
+      description: description,
+      package: package,
       deps: deps ]
   end
 
@@ -22,5 +26,17 @@ defmodule Currently.Mixfile do
       {:httpotion, github: "myfreeweb/httpotion"},
       {:jsex,      github: "talentdeficit/jsex", branch: "develop" },
     ]
+  end
+
+  defp description do
+    """
+    Currently is a tool to display cards currently assigns on Trello
+    """
+  end
+
+  defp package do
+    [ contributors: ["chatgris"],
+      licenses: ["MIT"],
+      links: [ { "Github", "https://github.com/chatgris/currently" }]]
   end
 end
