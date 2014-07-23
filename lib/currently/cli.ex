@@ -46,8 +46,8 @@ defmodule Currently.CLI do
                                      aliases: [h: :help, k: :key, t: :token]
     )
     case parse do
-      {[key: key, token: token], [command], _}             -> {binary_to_atom(command), key, token}
-      {_, [command], [key: key, token: token]}             -> {binary_to_atom(command), key, token}
+      {[key: key, token: token], [command], _}             -> {String.to_atom(command), key, token}
+      {_, [command], [key: key, token: token]}             -> {String.to_atom(command), key, token}
       {[], ["cards"], _}                                   -> :cards
       _                                                    -> :help
     end
