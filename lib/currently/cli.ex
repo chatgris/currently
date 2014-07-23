@@ -25,13 +25,13 @@ defmodule Currently.CLI do
       iex> Currently.CLI.parse_args(["-help", "token"])
       :help
 
-      iex> Currently.CLI.parse_args(["cards", "-key", "key", "-token", "token"])
+      iex> Currently.CLI.parse_args(["cards", "--key", "key", "--token", "token"])
       {:cards, "key", "token"}
 
       iex> Currently.CLI.parse_args(["cards", "-k", "key", "-t", "token"])
       {:cards, "key", "token"}
 
-      iex> Currently.CLI.parse_args(["configure", "-key", "trello_key", "-token", "trello_token"])
+      iex> Currently.CLI.parse_args(["configure", "--key", "trello_key", "--token", "trello_token"])
       {:configure, "trello_key", "trello_token"}
 
       iex> Currently.CLI.parse_args(["configure", "-k", "trello_key", "-t", "trello_token"])
