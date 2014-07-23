@@ -6,7 +6,7 @@
 
 ## Dependencies
 
-  * Elixir >= 0.13
+  * Elixir >= 0.14
 
 ## How to use it?
 

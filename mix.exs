@@ -6,7 +6,7 @@ defmodule Currently.Mixfile do
   def project do
     [ app: :currently,
       version: "0.0.3",
-      elixir: "~> 0.13",
+      elixir: "~> 0.14",
       escript_main_module: Currently,
       escript_embed_elixir: true,
       description: description,
