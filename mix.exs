@@ -24,7 +24,7 @@ defmodule Currently.Mixfile do
   defp deps do
     [
       {:httpotion, github: "myfreeweb/httpotion"},
-      {:jsex,      github: "talentdeficit/jsex", branch: "develop" },
+      {:jsex,      "~> 2.0" }
     ]
   end
 
