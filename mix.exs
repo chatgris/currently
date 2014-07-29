@@ -7,7 +7,7 @@ defmodule Currently.Mixfile do
     [ app: :currently,
       version: "0.0.3",
       elixir: "~> 0.14",
-      escript_main_module: Currently,
+      escript: escript,
       escript_embed_elixir: true,
       description: description,
       package: package,
@@ -26,6 +26,10 @@ defmodule Currently.Mixfile do
       {:httpotion, github: "myfreeweb/httpotion"},
       {:jsex,      "~> 2.0" }
     ]
+  end
+
+  defp escript do
+    [main_module: Currently]
   end
 
   defp description do
