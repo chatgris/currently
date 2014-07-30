@@ -14,7 +14,7 @@
 git clone https://github.com/chatgris/currently.git
 cd currently
 mix deps.get
-mix escriptize
+mix escript.build
 ./currently configure -k <key> -t <token>
 ./currently cards
 ```
