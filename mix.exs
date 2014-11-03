@@ -41,6 +41,6 @@ defmodule Currently.Mixfile do
   defp package do
     [ contributors: ["chatgris"],
       licenses: ["MIT"],
-      links: [ { "Github", "https://github.com/chatgris/currently" }]]
+      links: %{ "Github" => "https://github.com/chatgris/currently" }]
   end
 end
