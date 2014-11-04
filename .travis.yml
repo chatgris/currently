@@ -2,10 +2,12 @@ language: erlang
 otp_release:
   - 17.0
   - 17.1
+  - 17.2
+  - 17.3
 env:
-  - ELIXIR="v0.14.3"
-  - ELIXIR="v0.15.0"
-  - ELIXIR='v0.15.1'
+  - ELIXIR="v1.0.0"
+  - ELIXIR="v1.0.1"
+  - ELIXIR="v1.0.2"
 install: mix deps.get
 before_install:
   - mkdir -p vendor/elixir
