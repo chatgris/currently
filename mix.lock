@@ -1,5 +1,5 @@
 %{"httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "1419c64468483d192cc017f18de3412f9dca7fb4", []},
   "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "7871e2ebe8811efb64e1917e2de455fa87e8dfe3", [tag: "v4.1.0"]},
-  "jsex": {:package, "2.0.0"},
+  "jsex": {:hex, :jsex, "2.0.0"},
   "jsonex": {:git, "git://github.com/marcelog/jsonex.git", "82e6c416eed5e791073427bf3079d7ab7b85a1e1", []},
-  "jsx": {:package, "2.0.4"}}
+  "jsx": {:hex, :jsx, "2.0.4"}}
