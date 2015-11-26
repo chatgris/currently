@@ -75,7 +75,7 @@ defmodule Currently.CLI do
   end
 
   def process({:configure, key, token}) do
-    configuration = Jsonex.encode([key: key, token: token])
+    configuration = JSEX.encode([key: key, token: token])
     File.write!(configuration_path, configuration)
   end
 
