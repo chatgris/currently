@@ -23,7 +23,8 @@ defmodule Currently.Mixfile do
   # { :foobar, "0.1", git: "https://github.com/elixir-lang/foobar.git" }
   defp deps do
     [
-      {:httpotion, github: "myfreeweb/httpotion"},
+      {:ibrowse, github: "cmullaparthi/ibrowse", tag: "v4.1.2"},
+      {:httpotion, "~> 2.1.0"},
       {:jsex,      "~> 2.0" }
     ]
   end
